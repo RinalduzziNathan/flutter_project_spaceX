@@ -1,14 +1,18 @@
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_project/manager/launch_manager.dart';
+import 'package:flutter_project/model/launch.dart';
 
 class NextLaunchViewModel extends ChangeNotifier{
 
-  String test = "I am a test";
-  int a = 3;
+  Launch? launch;
 
   NextLaunchViewModel(){
-    a = 4;
-
+   loadNextLaunch();
   }
+    Future<void> loadNextLaunch() async {
+     launch = (await LaunchManager().loadNextLaunch())!;
+     notifyListeners();
+   }
 
 }
