@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project/manager/launch_manager.dart';
 import 'package:flutter_project/model/launch.dart';
+import 'package:flutter_project/view_model/next_launch_vm.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,40 +27,31 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatefulWidget {
+class MyHomePage extends StatelessWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
 
 
   final String title;
 
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
+    return ChangeNotifierProvider(
+        create: (BuildContext context) => NextLaunchViewModel(),
+        child: Consumer<NextLaunchViewModel>(
+            builder: (context, NextLaunchViewModel viewModel, child) {
+              return Scaffold(
+                  appBar: AppBar(
 
-    return Scaffold(
-      appBar: AppBar(
+                  title: Text("Next Launch : "),
+                  ),
+                  body: Center(
+                    child:    Text(viewModel.test),
+                  ),
 
-        title: Text(widget.title),
-      ),
-      body: Center(
-          child: FutureBuilder<Launch?>(
-            future: LaunchManager().loadNextLaunch(),
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                return Text(snapshot.data?.name ?? "aaa");
-              } else {
-                return const Center(child: CircularProgressIndicator(),);
-              }
-            },
-          ) ,
-
-      ),
+              );
+            }
+            )
     );
+
   }
 }
