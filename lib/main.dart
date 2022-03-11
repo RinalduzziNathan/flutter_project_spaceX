@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
 import 'package:flutter_project/manager/launch_manager.dart';
 import 'package:flutter_project/model/launch.dart';
 import 'package:flutter_project/view/launchList.dart';
@@ -40,12 +41,31 @@ class MyHomePage extends StatelessWidget {
           appBar: AppBar(
             title: const Text("SpaceX"),
           ),
+
           body: upcomingLaunches.isLoading
               ? const Center(
             child: CircularProgressIndicator(),
+          ) : Column(
+            children:<Widget> [
+              Container(
+
+                child: Row(
+
+                  children: [
+                    Text("Time before next launch : "),
+                    CountdownTimer(
+                      endTime: upcomingLaunches.endTime,
+                    ),
+                  ],
+                ),
+                color: Colors.grey,
+                height: 60,
+              ),
+               Expanded(
+                   child: LaunchList(launches: upcomingLaunches.launches!))
+            ],
           )
 
-                  : LaunchList(launches: upcomingLaunches.launches!)
 
         ),
       ),

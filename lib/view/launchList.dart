@@ -14,6 +14,7 @@ class LaunchList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return launches.isNotEmpty ? ListView.builder(
+      
       itemBuilder: (context, position) {
         Launch launch = launches[position];
         return InkWell(
@@ -55,7 +56,7 @@ class LaunchList extends StatelessWidget {
                     const SizedBox(
                       height: 8,
                     ),
-                    Text("Catégorie : ${launch.id ?? 'Inconnue'}")
+                    Text("Catégorie : ${launch.dateUtc ?? 'Inconnue'}")
                   ],
                 ),
               ),
