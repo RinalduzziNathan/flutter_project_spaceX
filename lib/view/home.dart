@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project/manager/api_manager.dart';
+import 'package:flutter_project/view/placeholderView.dart';
 import 'package:flutter_project/view/upcomingLaunches.dart';
-
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key, required this.title}) : super(key: key);
@@ -32,38 +33,52 @@ class _HomePageState extends State<HomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-        appBar: AppBar(
-          // Here we take the value from the HomePage object that was created by
-          // the App.build method, and use it to set our appbar title.
-          title: Text(widget.title),
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          items: const [
-            BottomNavigationBarItem(
-                label: "Launches",
-                icon: Icon(Icons.list),
-                activeIcon: Icon(
-                  Icons.list,
-                  color: Colors.blue,
-                )),
-            BottomNavigationBarItem(
-                label: "Favs",
-                icon: Icon(Icons.favorite_border),
-                activeIcon: Icon(
-                  Icons.favorite,
-                  color: Colors.blue,
-                ))
-          ],
-          currentIndex: _currentIndex,
-          onTap: (newIndex) {
-            setState(() {
-              _currentIndex = newIndex;
-            });
-            _pageController.animateToPage(_currentIndex,
-                duration: kThemeAnimationDuration, curve: Curves.ease);
-          },
-        ),
-        body: viewUpcomingLaunches()
+      appBar: AppBar(
+        // Here we take the value from the HomePage object that was created by
+        // the App.build method, and use it to set our appbar title.
+        title: Text(widget.title),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+              label: "Launches",
+              icon: Icon(Icons.list),
+              activeIcon: Icon(
+                Icons.list,
+                color: Colors.blue,
+              )),
+          BottomNavigationBarItem(
+              label: "Favs",
+              icon: Icon(Icons.favorite_border),
+              activeIcon: Icon(
+                Icons.favorite,
+                color: Colors.blue,
+              )),
+          BottomNavigationBarItem(
+              label: "Test",
+              icon: Icon(Icons.settings),
+              activeIcon: Icon(
+                Icons.settings,
+                color: Colors.purple,
+              ))
+        ],
+        currentIndex: _currentIndex,
+        onTap: (newIndex) {
+          setState(() {
+            _currentIndex = newIndex;
+          });
+          _pageController.animateToPage(_currentIndex,
+              duration: kThemeAnimationDuration, curve: Curves.ease);
+        },
+      ),
+      body: PageView(
+        controller: _pageController,
+        children: [
+          viewUpcomingLaunches(),
+          PlaceHolderView(),
+          Placeholder()
+        ],
+      ),
     );
   }
 }

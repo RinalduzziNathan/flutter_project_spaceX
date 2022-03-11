@@ -23,6 +23,7 @@ class LaunchManager {
 
   Future<List<Launch>> loadUpcomingLaunches() async {
     try {
+      upcominglaunches.clear();
       var response = await ApiManager().getUpcomingLaunches();
 
       upcominglaunches.addAll(List<Launch>.from(
@@ -35,7 +36,6 @@ class LaunchManager {
   }
 
   Future<Launch?> loadNextLaunch() async {
-    // Calling API
     try {
       var response = await ApiManager().getNextLaunch();
       if (response.data != null) {
