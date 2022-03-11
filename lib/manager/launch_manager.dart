@@ -1,9 +1,9 @@
-
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_project/manager/api_manager.dart';
 import 'package:flutter_project/model/launch.dart';
 
 class LaunchManager {
+  List<Launch> upcominglaunches = [];
 
   List<Launch>? _launches;
 
@@ -21,7 +21,18 @@ class LaunchManager {
 
   LaunchManager._internal();
 
+  Future<List<Launch>> loadUpcomingLaunches() async {
+    try {
+      var response = await ApiManager().getUpcomingLaunches();
 
+      upcominglaunches.addAll(List<Launch>.from(
+          response.data?.map((item) => Launch.fromJson(item)) ?? []));
+      return upcominglaunches;
+    } catch (error, stackTrace) {
+      debugPrint("$stackTrace");
+    }
+    return upcominglaunches;
+  }
 
   Future<Launch?> loadNextLaunch() async {
     // Calling API
@@ -29,16 +40,11 @@ class LaunchManager {
       var response = await ApiManager().getNextLaunch();
       if (response.data != null) {
         nextLaunch = Launch.fromJson(response.data ?? {});
-        print(nextLaunch?.name);
-        print(nextLaunch?.details);
-        print(nextLaunch?.links?.patch?.small);
-        return nextLaunch;
 
+        return nextLaunch;
       }
     } catch (e) {
       print("Erreur : $e");
     }
   }
-
-
 }

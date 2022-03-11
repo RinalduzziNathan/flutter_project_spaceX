@@ -46,9 +46,9 @@ class MyHomePage extends StatelessWidget {
               : ListView.builder(
             itemBuilder: (context, position) => Padding(
               padding: const EdgeInsets.fromLTRB(20, 10, 20, 20),
-              child: Text(upcomingLaunches.launches[position].name ?? ''),
+              child: Text(upcomingLaunches.launches?[position].name ?? ''),
             ),
-            itemCount: upcomingLaunches.launches.length,
+            itemCount: upcomingLaunches.launches?.length,
           ),
         ),
       ),
