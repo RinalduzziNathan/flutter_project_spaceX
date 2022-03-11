@@ -2,10 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_project/manager/api_manager.dart';
 import 'package:flutter_project/model/launch.dart';
 
+import 'database_manager.dart';
+
 class LaunchManager {
   List<Launch> upcominglaunches = [];
 
   List<Launch>? _launches;
+  List<Launch>? _favoriteLaunches;
 
   List<Launch> get launch => _launches ?? [];
 
@@ -60,4 +63,27 @@ class LaunchManager {
     return launch;
   }
 
+  Future<void> loadFavoriteLaunches() async {
+    _favoriteLaunches = await DatabaseManager().getFavoriteLaunches();
+  }
+
+  bool isLaunchFavorite(String idLaunh) {
+    try {
+      return _favoriteLaunches?.firstWhere((launch) => launch.id == idLaunh) != null;
+    } catch (e) {
+      // Spot not found
+      return false;
+    }
+  }
+
+  Future<void> toggleFavorite(Launch launchToUpdate) async {
+    bool isFavorite = await DatabaseManager().isFavorite(launchToUpdate.id!);
+    await DatabaseManager().toggleFavorite(isFavorite, launchToUpdate);
+    if (isFavorite) {
+      _favoriteLaunches?.removeWhere((Launch launch) => launch.id == launchToUpdate.id);
+    } else {
+      _favoriteLaunches ??= [];
+      _favoriteLaunches?.add(launchToUpdate);
+    }
+  }
 }

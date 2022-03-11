@@ -86,7 +86,7 @@ class _LaunchDetailState extends State<LaunchDetail> {
                       const SizedBox(
                         height: 16,
                       ),
-                      _SpotDescription(launch?.details ?? "Details are missing")
+                      _SpotDescription(launch.details ?? "Details are missing")
                     ],
                   ),
                 ))

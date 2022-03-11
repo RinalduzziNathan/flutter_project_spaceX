@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project/manager/launch_manager.dart';
 import 'package:flutter_project/model/launch.dart';
 import 'package:flutter_project/view/launch_detail.dart';
 
@@ -9,7 +10,7 @@ class LaunchList extends StatelessWidget {
   final List<Launch> launches;
   final Function(Launch, bool)? onFavoriteChanged;
 
-  const LaunchList({Key? key, required this.launches, this.onFavoriteChanged})
+  const LaunchList({Key? key, required this.launches,required this.onFavoriteChanged})
       : super(key: key);
 
   @override
@@ -20,14 +21,14 @@ class LaunchList extends StatelessWidget {
         Launch launch = launches[position];
         return InkWell(
           onTap: () async {
-           // bool oldFavorite = SpotManager().isSpotFavorite(spot.id);
+            bool oldFavorite = LaunchManager().isLaunchFavorite(launch.id!);
 
-           Navigator.of(context).pushNamed(LaunchDetail.route,
+            var newFavorite = await Navigator.of(context).pushNamed(LaunchDetail.route,
                 arguments: LaunchDetailArguments(launch: launch));
 
-           // if (newFavorite is bool && newFavorite != oldFavorite) {
-             // onFavoriteChanged?.call(spot, false);
-            //}
+            if (newFavorite is bool && newFavorite != oldFavorite) {
+              onFavoriteChanged?.call(launch, false);
+            }
           },
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -57,7 +58,17 @@ class LaunchList extends StatelessWidget {
                     const SizedBox(
                       height: 8,
                     ),
-                    Text("Catégorie : ${launch.dateUtc ?? 'Inconnue'}")
+                    Text("Catégorie : ${launch.dateUtc ?? 'Inconnue'}"),
+                    IconButton(
+                      icon: Icon(LaunchManager().isLaunchFavorite(launch.id!)
+                          ? Icons.favorite
+                          : Icons.favorite_border),
+                      onPressed: () {
+                        onFavoriteChanged?.call(launch, true);
+
+                      },
+                    ),
+                    const SizedBox(width: 16,)
                   ],
                 ),
               ),

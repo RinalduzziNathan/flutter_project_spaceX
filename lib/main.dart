@@ -8,8 +8,11 @@ import 'package:flutter_project/view_model/upcoming_launches.dart';
 import 'package:provider/provider.dart';
 
 import 'app/app.dart';
+import 'manager/database_manager.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await DatabaseManager().init();
   runApp(const App());
 }
 
