@@ -16,8 +16,8 @@ class ApiManager {
   Future<Response<Map<String, dynamic>>> getNextLaunch() async =>
       await dio.get<Map<String, dynamic>>("/v4/launches/next");
 
-  Future<Response<Map<String, dynamic>>> getUpcomingLaunches() async =>
-      await dio.get<Map<String, dynamic>>("/v4/launches/upcoming");
+  Future<Response<List<dynamic>>> getUpcomingLaunches() async =>
+      await dio.get<List<dynamic>>("/v4/launches/upcoming");
 
 
 }

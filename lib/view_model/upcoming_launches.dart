@@ -3,18 +3,24 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_project/manager/launch_manager.dart';
 import 'package:flutter_project/model/launch.dart';
 
+import 'package:flutter_project/manager/api_manager.dart';
 class UpcomingLaunches extends ChangeNotifier{
 
   List<Launch> launches = [];
-
-  NextLaunchViewModel(){
-    loadNextLaunch();
+  bool isLoading = true;
+  UpcomingLaunches(){
+    loadNextLaunches();
   }
-  Future<void> loadNextLaunch() async {
-    launches = (await LaunchManager().loadUpcomingLaunches())!;
-    for (var launch in launches){
-      print(launch.name);
+  Future<void> loadNextLaunches() async {
+    try {
+      var response = await ApiManager().getUpcomingLaunches();
+      launches.addAll(List<Launch>.from(
+          response.data?.map((item) => Launch.fromJson(item)) ?? []));
+    } catch (error, stackTrace) {
+      debugPrint("$stackTrace");
     }
+
+     isLoading = false;
     notifyListeners();
   }
 

@@ -32,29 +32,26 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        ChangeNotifierProvider(
-            create: (BuildContext context) => NextLaunchViewModel(),
-            child: Consumer<NextLaunchViewModel>(
-                builder: (context, NextLaunchViewModel viewModel, child) {
-              return Scaffold(
-                appBar: AppBar(
-                  title: Text("Next Launch : "),
-                ),
-                body: Center(
-                  child: Text(viewModel.launch?.name ?? "Not found"),
-                ),
-              );
-            })),
-        ChangeNotifierProvider(
-            create: (BuildContext context) => UpcomingLaunches(),
-            child: Consumer<UpcomingLaunches>(
-                builder: (context, UpcomingLaunches viewModel, child) {
-                 return Text
-                      (viewModel.launches.first.name ?? "Not found");
-                })),
-      ],
+    return ChangeNotifierProvider(
+      create: (_) => UpcomingLaunches(),
+      child: Consumer<UpcomingLaunches>(
+        builder: (context, UpcomingLaunches upcomingLaunches, child) => Scaffold(
+          appBar: AppBar(
+            title: const Text("SpaceX"),
+          ),
+          body: upcomingLaunches.isLoading
+              ? const Center(
+            child: CircularProgressIndicator(),
+          )
+              : ListView.builder(
+            itemBuilder: (context, position) => Padding(
+              padding: const EdgeInsets.fromLTRB(20, 10, 20, 20),
+              child: Text(upcomingLaunches.launches[position].name ?? ''),
+            ),
+            itemCount: upcomingLaunches.launches.length,
+          ),
+        ),
+      ),
     );
   }
 }

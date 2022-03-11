@@ -21,21 +21,7 @@ class LaunchManager {
 
   LaunchManager._internal();
 
-  Future<List<Launch>?> loadUpcomingLaunches() async {
-    // Calling API
-    try {
-      var response = await ApiManager().getUpcomingLaunches();
-      if (response.data != null) {
-        var upcomingLaunches = List<Map<String, dynamic>>.from(response.data?["data"]).map((json) => Launch.fromJson(json)).toList();
 
-        return upcomingLaunches;
-
-      }
-    } catch (e) {
-      print("Erreur : $e");
-      return _launches;
-    }
-  }
 
   Future<Launch?> loadNextLaunch() async {
     // Calling API
