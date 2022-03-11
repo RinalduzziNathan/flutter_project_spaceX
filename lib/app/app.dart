@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project/model/launch.dart';
 import 'package:flutter_project/view/home.dart';
+import 'package:flutter_project/view/launch_detail.dart';
 
 
 class App extends StatelessWidget {
@@ -17,7 +19,22 @@ class App extends StatelessWidget {
 
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
+      onGenerateRoute: (RouteSettings settings) {
+        var arguments = settings.arguments;
+        switch (settings.name) {
+          case LaunchDetail.route:
+            if (arguments != null && arguments is LaunchDetailArguments) {
+              Launch  launch= arguments.launch;
+              return MaterialPageRoute(builder: (_) => LaunchDetail(launch));
+            } else {
+              throw Exception(
+                  "Cette route doit avoir un objet SpotDetailArgument en argument");
+            }
 
+          default:
+            return unknownRoute();
+        }
+      },
       home: const HomePage(title: 'SpaceX'),
     );
   }

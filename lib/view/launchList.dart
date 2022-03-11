@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project/model/launch.dart';
+import 'package:flutter_project/view/launch_detail.dart';
 
 import 'image_placeholder.dart';
 
@@ -14,15 +15,15 @@ class LaunchList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return launches.isNotEmpty ? ListView.builder(
-      
+
       itemBuilder: (context, position) {
         Launch launch = launches[position];
         return InkWell(
           onTap: () async {
            // bool oldFavorite = SpotManager().isSpotFavorite(spot.id);
 
-            //var newFavorite = await Navigator.of(context).pushNamed(SpotDetail.route,
-              //  arguments: SpotDetailArguments(spot: spot));
+           Navigator.of(context).pushNamed(LaunchDetail.route,
+                arguments: LaunchDetailArguments(launch: launch));
 
            // if (newFavorite is bool && newFavorite != oldFavorite) {
              // onFavoriteChanged?.call(spot, false);

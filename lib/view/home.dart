@@ -40,7 +40,7 @@ class _HomePageState extends State<HomePage> {
         bottomNavigationBar: BottomNavigationBar(
           items: const [
             BottomNavigationBarItem(
-                label: "List",
+                label: "Launches",
                 icon: Icon(Icons.list),
                 activeIcon: Icon(
                   Icons.list,

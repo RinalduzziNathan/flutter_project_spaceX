@@ -47,4 +47,17 @@ class LaunchManager {
       print("Erreur : $e");
     }
   }
+  Future<Launch?> getLaunchDetail(String idLaunch) async {
+    Launch? launch;
+    try {
+      var response = await ApiManager().getLaunchByID(idLaunch);
+      if (response.data != null) {
+        launch = Launch.fromJson(response.data ?? {});
+      }
+    } catch (error) {
+      debugPrint("Erreur : $error}");
+    }
+    return launch;
+  }
+
 }
