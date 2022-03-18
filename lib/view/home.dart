@@ -6,10 +6,8 @@ import 'package:flutter_project/model/launch.dart';
 import 'package:flutter_project/view/favoriteLaunchList.dart';
 import 'package:flutter_project/view/map.dart';
 import 'package:flutter_project/view/pastLaunches.dart';
-import 'package:flutter_project/view/placeholderView.dart';
 import 'package:flutter_project/view/upcomingLaunches.dart';
-import 'package:flutter_project/view_model/upcoming_launchesvm.dart';
-import 'package:provider/provider.dart';
+
 
 import 'favoriteLaunches.dart';
 
@@ -66,6 +64,7 @@ class _HomePageState extends State<HomePage> {
                   activeIcon: Icon(
                     Icons.map,
                     color: Colors.blueGrey,
+
                   ))
             ],
             currentIndex: _currentIndex,
@@ -78,12 +77,13 @@ class _HomePageState extends State<HomePage> {
             },
           ),
           body: PageView(
+            physics: NeverScrollableScrollPhysics(),
             controller: _pageController,
             children: [
               ViewUpcomingLaunches(),
               ViewFavoriteLaunches(),
               ViewPastLaunches(),
-              Map(),
+              MyApp(),
             ],
           ),
         );
