@@ -13,12 +13,24 @@ class UpcomingLaunches extends ChangeNotifier{
   }
   Future<void> loadNextLaunches() async {
 
-    launches = (await LaunchManager().loadUpcomingLaunches());
+    launches = await LaunchManager().loadUpcomingLaunches();
+    await LaunchManager().initFavoriteLaunches();
 
 
     endTime = launches?.first?.dateUtc?.millisecondsSinceEpoch ?? DateTime.now().millisecondsSinceEpoch;
     isLoading = false;
     notifyListeners();
   }
+
+  Future<void> toggleFavorites(Launch launch) async{
+    await LaunchManager().toggleFavorite(launch);
+    notifyListeners();
+  }
+
+  bool isLaunchFavorite(String idLaunch){
+    bool isFavorite = LaunchManager().isLaunchFavorite(idLaunch);
+    return isFavorite;
+  }
+
 
 }

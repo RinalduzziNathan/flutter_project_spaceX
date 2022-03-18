@@ -12,17 +12,17 @@ class LaunchManager {
 
   List<Launch> get launch => _launches ?? [];
 
-  List<Launch>? _favoriteLaunch;
-
   Launch? nextLaunch;
-
-  List<Launch> get favoriteLaunch => _favoriteLaunch ?? [];
 
   static final LaunchManager _instance = LaunchManager._internal();
 
   factory LaunchManager() => _instance;
 
   LaunchManager._internal();
+
+  Future<void> initFavoriteLaunches() async {
+    _favoriteLaunches = await DatabaseManager().getFavoriteLaunches();
+  }
 
   Future<List<Launch>> loadUpcomingLaunches() async {
     try {
@@ -67,9 +67,9 @@ class LaunchManager {
     _favoriteLaunches = await DatabaseManager().getFavoriteLaunches();
   }
 
-  bool isLaunchFavorite(String idLaunh) {
+  bool isLaunchFavorite(String idLaunch) {
     try {
-      return _favoriteLaunches?.firstWhere((launch) => launch.id == idLaunh) != null;
+      return _favoriteLaunches?.firstWhere((launch) => launch.id == idLaunch) != null;
     } catch (e) {
       // Spot not found
       return false;
