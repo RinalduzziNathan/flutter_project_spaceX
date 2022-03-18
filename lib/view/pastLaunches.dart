@@ -2,23 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
 import 'package:flutter_project/manager/launch_manager.dart';
 import 'package:flutter_project/model/launch.dart';
-import 'package:flutter_project/view/favoriteLaunchList.dart';
-import 'package:flutter_project/view_model/favorites_launches_vm.dart';
+import 'package:flutter_project/view/pastLaunchList.dart';
+import 'package:flutter_project/view_model/past_launches_vm.dart';
 import 'package:flutter_project/view_model/upcoming_launchesvm.dart';
-
+import 'package:flutter_project/view/upcomingLaunchList.dart';
 import 'package:provider/provider.dart';
 
-class ViewFavoriteLaunches extends StatelessWidget {
-  const ViewFavoriteLaunches({Key? key}) : super(key: key);
+class ViewPastLaunches extends StatelessWidget {
+  const ViewPastLaunches({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) => FavoritesLaunchesViewModel(),
-      child: Consumer<FavoritesLaunchesViewModel>(
-        builder: (context, FavoritesLaunchesViewModel favoritesLaunchesViewModel, child) =>
+      create: (_) => PastLaunches(),
+      child: Consumer<PastLaunches>(
+        builder: (context, PastLaunches viewModel, child) =>
             Scaffold(
-                body: favoritesLaunchesViewModel.isLoading
+                body: viewModel.isLoading
                     ? const Center(
                   child: CircularProgressIndicator(),
                 )
@@ -27,19 +27,20 @@ class ViewFavoriteLaunches extends StatelessWidget {
                     Container(
                       child: Row(
                         children: [
-                          Text("All your favorites Launches :"),
-
+                          Text("The past launches"),
                         ],
+
                       ),
-                      color: Colors.deepPurple,
+                      color: Colors.lightGreenAccent,
                       height: 40,
                     ),
                     Expanded(
-                        child: FavoriteLaunchList(
+                        child: PastLaunchesList(
+                          launches: viewModel.launches!,
                           onFavoriteChanged:
                               (Launch launch, bool shouldToggle) async {
                             if (shouldToggle) {
-                              favoritesLaunchesViewModel.toggleFavorites(launch);
+                              viewModel.toggleFavorites(launch);
                             }
                           },
                         ))

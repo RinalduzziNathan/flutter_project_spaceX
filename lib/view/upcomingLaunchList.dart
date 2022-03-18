@@ -2,28 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter_project/manager/launch_manager.dart';
 import 'package:flutter_project/model/launch.dart';
 import 'package:flutter_project/view/launch_detail.dart';
-import 'package:flutter_project/view_model/favorites_launches_vm.dart';
 import 'package:flutter_project/view_model/upcoming_launchesvm.dart';
 import 'package:provider/provider.dart';
 
 import 'image_placeholder.dart';
 
 
-class FavoriteLaunchList extends StatelessWidget {
-
+class UpcomingLaunchList extends StatelessWidget {
+  final List<Launch> launches;
   final Function(Launch, bool)? onFavoriteChanged;
 
-   const FavoriteLaunchList({Key? key, required this.onFavoriteChanged})
+  const UpcomingLaunchList({Key? key, required this.launches,required this.onFavoriteChanged})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<FavoritesLaunchesViewModel>(builder:(context, FavoritesLaunchesViewModel viewModel, child){
-      var favlaunches = viewModel.favlaunches!;
-      return favlaunches.isNotEmpty ? ListView.builder(
+    return Consumer<UpcomingLaunches>(builder:(context, UpcomingLaunches viewModel, child){
+      return launches.isNotEmpty ? ListView.builder(
 
         itemBuilder: (context, position) {
-          Launch launch = favlaunches[position];
+          Launch launch = launches[position];
           return InkWell(
             onTap: () async {
               bool oldFavorite = LaunchManager().isLaunchFavorite(launch.id!);
@@ -69,9 +67,7 @@ class FavoriteLaunchList extends StatelessWidget {
                             ? Icons.favorite
                             : Icons.favorite_border),
                         onPressed: () {
-                          print(launch.name);
                           onFavoriteChanged?.call(launch, true);
-
                         },
                       ),
                       const SizedBox(width: 16,)
@@ -84,7 +80,7 @@ class FavoriteLaunchList extends StatelessWidget {
             ),
           );
         },
-        itemCount: favlaunches.length,
+        itemCount: launches.length,
       ) : const Center(child: Text('No launches'),);
     });
 

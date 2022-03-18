@@ -6,6 +6,7 @@ import 'database_manager.dart';
 
 class LaunchManager {
   List<Launch> upcominglaunches = [];
+  List<Launch> pastlaunches = [];
 
   List<Launch>? _launches;
   List<Launch>? _favoriteLaunches;
@@ -36,6 +37,20 @@ class LaunchManager {
       debugPrint("$stackTrace");
     }
     return upcominglaunches;
+  }
+
+  Future<List<Launch>> loadPastLaunches() async {
+    try {
+      pastlaunches.clear();
+      var response = await ApiManager().getPastLaunches();
+
+      pastlaunches.addAll(List<Launch>.from(
+          response.data?.map((item) => Launch.fromJson(item)) ?? []));
+      return pastlaunches;
+    } catch (error, stackTrace) {
+      debugPrint("$stackTrace");
+    }
+    return pastlaunches;
   }
 
   Future<Launch?> loadNextLaunch() async {

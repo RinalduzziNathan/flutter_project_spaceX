@@ -4,9 +4,10 @@ import 'package:flutter_project/manager/database_manager.dart';
 import 'package:flutter_project/manager/launch_manager.dart';
 import 'package:flutter_project/model/launch.dart';
 import 'package:flutter_project/view/favoriteLaunchList.dart';
+import 'package:flutter_project/view/pastLaunches.dart';
 import 'package:flutter_project/view/placeholderView.dart';
 import 'package:flutter_project/view/upcomingLaunches.dart';
-import 'package:flutter_project/view_model/upcoming_launches.dart';
+import 'package:flutter_project/view_model/upcoming_launchesvm.dart';
 import 'package:provider/provider.dart';
 
 import 'favoriteLaunches.dart';
@@ -35,10 +36,10 @@ class _HomePageState extends State<HomePage> {
             items: const [
               BottomNavigationBarItem(
                   label: "Launches",
-                  icon: Icon(Icons.list),
+                  icon: Icon(Icons.watch_later_sharp,color: Colors.orange),
                   activeIcon: Icon(
-                    Icons.list,
-                    color: Colors.blue,
+                    Icons.watch_later_sharp,
+                    color: Colors.orangeAccent,
                   )),
               BottomNavigationBarItem(
                   label: "Favs",
@@ -48,11 +49,11 @@ class _HomePageState extends State<HomePage> {
                     color: Colors.red,
                   )),
               BottomNavigationBarItem(
-                  label: "Test",
-                  icon: Icon(Icons.settings),
+                  label: "Past launches",
+                  icon: Icon(Icons.youtube_searched_for_rounded,color: Colors.green,),
                   activeIcon: Icon(
-                    Icons.settings,
-                    color: Colors.purple,
+                    Icons.youtube_searched_for_sharp,
+                    color: Colors.lightGreenAccent,
                   ))
             ],
             currentIndex: _currentIndex,
@@ -69,7 +70,7 @@ class _HomePageState extends State<HomePage> {
             children: [
               ViewUpcomingLaunches(),
               ViewFavoriteLaunches(),
-              Placeholder(),
+              ViewPastLaunches(),
             ],
           ),
         );

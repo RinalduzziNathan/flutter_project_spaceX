@@ -2,22 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_project/manager/launch_manager.dart';
 import 'package:flutter_project/model/launch.dart';
 import 'package:flutter_project/view/launch_detail.dart';
-import 'package:flutter_project/view_model/upcoming_launches.dart';
+import 'package:flutter_project/view_model/past_launches_vm.dart';
+import 'package:flutter_project/view_model/upcoming_launchesvm.dart';
 import 'package:provider/provider.dart';
 
 import 'image_placeholder.dart';
 
 
-class LaunchList extends StatelessWidget {
+class PastLaunchesList extends StatelessWidget {
   final List<Launch> launches;
   final Function(Launch, bool)? onFavoriteChanged;
 
-  const LaunchList({Key? key, required this.launches,required this.onFavoriteChanged})
+  const PastLaunchesList({Key? key, required this.launches,required this.onFavoriteChanged})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<UpcomingLaunches>(builder:(context, UpcomingLaunches viewModel, child){
+    return Consumer<PastLaunches>(builder:(context, PastLaunches viewModel, child){
       return launches.isNotEmpty ? ListView.builder(
 
         itemBuilder: (context, position) {

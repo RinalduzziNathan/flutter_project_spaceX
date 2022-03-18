@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
 import 'package:flutter_project/manager/launch_manager.dart';
 import 'package:flutter_project/model/launch.dart';
-import 'package:flutter_project/view_model/upcoming_launches.dart';
-import 'package:flutter_project/view/launchList.dart';
+import 'package:flutter_project/view_model/upcoming_launchesvm.dart';
+import 'package:flutter_project/view/upcomingLaunchList.dart';
 import 'package:provider/provider.dart';
 
 class ViewUpcomingLaunches extends StatelessWidget {
@@ -35,7 +35,7 @@ class ViewUpcomingLaunches extends StatelessWidget {
                             height: 60,
                           ),
                           Expanded(
-                              child: LaunchList(
+                              child: UpcomingLaunchList(
                             launches: upcomingLaunches.launches!,
                             onFavoriteChanged:
                                 (Launch launch, bool shouldToggle) async {
