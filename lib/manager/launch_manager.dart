@@ -67,11 +67,14 @@ class LaunchManager {
     _favoriteLaunches = await DatabaseManager().getFavoriteLaunches();
   }
 
+  List<Launch> getFavoritesLaunches(){
+    return _favoriteLaunches ?? [];
+  }
+
   bool isLaunchFavorite(String idLaunch) {
     try {
       return _favoriteLaunches?.firstWhere((launch) => launch.id == idLaunch) != null;
     } catch (e) {
-      // Spot not found
       return false;
     }
   }

@@ -8,20 +8,20 @@ import 'package:provider/provider.dart';
 import 'image_placeholder.dart';
 
 
-class LaunchList extends StatelessWidget {
-  final List<Launch> launches;
+class FavoriteLaunchList extends StatelessWidget {
+  final List<Launch> favlaunches;
   final Function(Launch, bool)? onFavoriteChanged;
 
-  const LaunchList({Key? key, required this.launches,required this.onFavoriteChanged})
+  const FavoriteLaunchList({Key? key, required this.favlaunches,required this.onFavoriteChanged})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Consumer<UpcomingLaunches>(builder:(context, UpcomingLaunches viewModel, child){
-      return launches.isNotEmpty ? ListView.builder(
+      return favlaunches.isNotEmpty ? ListView.builder(
 
         itemBuilder: (context, position) {
-          Launch launch = launches[position];
+          Launch launch = favlaunches[position];
           return InkWell(
             onTap: () async {
               bool oldFavorite = LaunchManager().isLaunchFavorite(launch.id!);
@@ -67,7 +67,9 @@ class LaunchList extends StatelessWidget {
                             ? Icons.favorite
                             : Icons.favorite_border),
                         onPressed: () {
+                          print(launch.name);
                           onFavoriteChanged?.call(launch, true);
+
                         },
                       ),
                       const SizedBox(width: 16,)
@@ -80,7 +82,7 @@ class LaunchList extends StatelessWidget {
             ),
           );
         },
-        itemCount: launches.length,
+        itemCount: favlaunches.length,
       ) : const Center(child: Text('No launches'),);
     });
 

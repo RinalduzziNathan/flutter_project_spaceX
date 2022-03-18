@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project/model/launch.dart';
+import 'package:flutter_project/view/favoriteLaunchList.dart';
 import 'package:flutter_project/view/home.dart';
 import 'package:flutter_project/view/launch_detail.dart';
 
@@ -28,7 +29,7 @@ class App extends StatelessWidget {
               return MaterialPageRoute(builder: (_) => LaunchDetail(launch));
             } else {
               throw Exception(
-                  "Cette route doit avoir un objet SpotDetailArgument en argument");
+                  "Bad route, exception");
             }
 
           default:
