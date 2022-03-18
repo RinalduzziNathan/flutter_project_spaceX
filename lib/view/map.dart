@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter_project/src/locations.dart' as locations;
 
-class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+class MapFlutter extends StatefulWidget {
+  const MapFlutter({Key? key}) : super(key: key);
 
   @override
-  _MyAppState createState() => _MyAppState();
+  _MapFlutterState createState() => _MapFlutterState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _MapFlutterState extends State<MapFlutter> {
   final Map<String, Marker> _markers = {};
   Future<void> _onMapCreated(GoogleMapController controller) async {
     final googleOffices = await locations.getGoogleOffices();
@@ -34,7 +34,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        
+
         body: GoogleMap(
           onMapCreated: _onMapCreated,
           initialCameraPosition: const CameraPosition(

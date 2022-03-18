@@ -78,12 +78,13 @@ class _HomePageState extends State<HomePage> {
           ),
           body: PageView(
             physics: NeverScrollableScrollPhysics(),
+
             controller: _pageController,
-            children: [
+            children: const [
               ViewUpcomingLaunches(),
               ViewFavoriteLaunches(),
               ViewPastLaunches(),
-              MyApp(),
+              MapFlutter(),
             ],
           ),
         );
