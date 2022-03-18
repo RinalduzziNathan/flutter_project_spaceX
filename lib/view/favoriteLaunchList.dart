@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_project/manager/launch_manager.dart';
 import 'package:flutter_project/model/launch.dart';
 import 'package:flutter_project/view/launch_detail.dart';
+import 'package:flutter_project/view_model/favorites_launches_vm.dart';
 import 'package:flutter_project/view_model/upcoming_launches.dart';
 import 'package:provider/provider.dart';
 
@@ -9,15 +10,16 @@ import 'image_placeholder.dart';
 
 
 class FavoriteLaunchList extends StatelessWidget {
-  final List<Launch> favlaunches;
+
   final Function(Launch, bool)? onFavoriteChanged;
 
-  const FavoriteLaunchList({Key? key, required this.favlaunches,required this.onFavoriteChanged})
+   const FavoriteLaunchList({Key? key, required this.onFavoriteChanged})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<UpcomingLaunches>(builder:(context, UpcomingLaunches viewModel, child){
+    return Consumer<FavoritesLaunchesViewModel>(builder:(context, FavoritesLaunchesViewModel viewModel, child){
+      var favlaunches = viewModel.favlaunches!;
       return favlaunches.isNotEmpty ? ListView.builder(
 
         itemBuilder: (context, position) {

@@ -6,8 +6,8 @@ import 'package:flutter_project/view_model/upcoming_launches.dart';
 import 'package:flutter_project/view/launchList.dart';
 import 'package:provider/provider.dart';
 
-class viewUpcomingLaunches extends StatelessWidget {
-  const viewUpcomingLaunches({Key? key}) : super(key: key);
+class ViewUpcomingLaunches extends StatelessWidget {
+  const ViewUpcomingLaunches({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
