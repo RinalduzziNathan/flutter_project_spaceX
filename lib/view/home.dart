@@ -4,6 +4,7 @@ import 'package:flutter_project/manager/database_manager.dart';
 import 'package:flutter_project/manager/launch_manager.dart';
 import 'package:flutter_project/model/launch.dart';
 import 'package:flutter_project/view/favoriteLaunchList.dart';
+import 'package:flutter_project/view/map.dart';
 import 'package:flutter_project/view/pastLaunches.dart';
 import 'package:flutter_project/view/placeholderView.dart';
 import 'package:flutter_project/view/upcomingLaunches.dart';
@@ -82,7 +83,7 @@ class _HomePageState extends State<HomePage> {
               ViewUpcomingLaunches(),
               ViewFavoriteLaunches(),
               ViewPastLaunches(),
-              PlaceHolderView(),
+              Map(),
             ],
           ),
         );
