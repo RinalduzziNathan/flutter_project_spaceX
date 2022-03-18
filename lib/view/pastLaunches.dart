@@ -31,7 +31,7 @@ class ViewPastLaunches extends StatelessWidget {
                         ],
 
                       ),
-                      color: Colors.lightGreenAccent,
+                      color: Colors.blueGrey,
                       height: 40,
                     ),
                     Expanded(

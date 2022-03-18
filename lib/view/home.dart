@@ -33,6 +33,9 @@ class _HomePageState extends State<HomePage> {
             title: Text(widget.title),
           ),
           bottomNavigationBar: BottomNavigationBar(
+
+            selectedItemColor: Colors.blueGrey,
+            selectedLabelStyle: TextStyle(color: Colors.blueGrey),
             items: const [
               BottomNavigationBarItem(
                   label: "Launches",
@@ -54,6 +57,14 @@ class _HomePageState extends State<HomePage> {
                   activeIcon: Icon(
                     Icons.youtube_searched_for_sharp,
                     color: Colors.lightGreenAccent,
+                  )),
+              BottomNavigationBarItem(
+                  label: "Map",
+
+                  icon: Icon(Icons.map,color: Colors.grey,),
+                  activeIcon: Icon(
+                    Icons.map,
+                    color: Colors.blueGrey,
                   ))
             ],
             currentIndex: _currentIndex,
@@ -71,6 +82,7 @@ class _HomePageState extends State<HomePage> {
               ViewUpcomingLaunches(),
               ViewFavoriteLaunches(),
               ViewPastLaunches(),
+              PlaceHolderView(),
             ],
           ),
         );

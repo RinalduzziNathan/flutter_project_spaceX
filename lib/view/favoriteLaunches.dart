@@ -31,7 +31,7 @@ class ViewFavoriteLaunches extends StatelessWidget {
 
                         ],
                       ),
-                      color: Colors.deepPurple,
+                      color: Colors.redAccent,
                       height: 40,
                     ),
                     Expanded(

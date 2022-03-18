@@ -31,7 +31,7 @@ class ViewUpcomingLaunches extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            color: Colors.grey,
+                            color: Colors.blueGrey,
                             height: 60,
                           ),
                           Expanded(

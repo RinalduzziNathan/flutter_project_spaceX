@@ -66,7 +66,7 @@ class PastLaunchesList extends StatelessWidget {
                       IconButton(
                         icon: Icon((viewModel.isLaunchFavorite(launch.id!))
                             ? Icons.favorite
-                            : Icons.favorite_border),
+                            : Icons.favorite_border,color: Colors.red,),
                         onPressed: () {
                           onFavoriteChanged?.call(launch, true);
                         },
