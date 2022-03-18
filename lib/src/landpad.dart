@@ -7,35 +7,25 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'landpad.g.dart';
 
-@JsonSerializable()
-class LatLng {
-  LatLng({
-    required this.lat,
-    required this.lng,
-  });
 
-  factory LatLng.fromJson(Map<String, dynamic> json) => _$LatLngFromJson(json);
-  Map<String, dynamic> toJson() => _$LatLngToJson(this);
-
-  final double lat;
-  final double lng;
-}
-
-
-@JsonSerializable()
+@JsonSerializable(
+  checked: true,explicitToJson: true,
+)
 class Landpad {
   Landpad({
-    required this.coords,
-    required this.id,
-    required this.name,
-    required this.locality
+     this.latitude,
+     this.longitude,
+     this.id,
+     this.name,
+     this.locality
   });
-
+  double? latitude;
+  double? longitude;
+  String? id;
+  String? name;
+  String? locality;
   factory Landpad.fromJson(Map<String, dynamic> json) => _$LandpadFromJson(json);
   Map<String, dynamic> toJson() => _$LandpadToJson(this);
 
-  final LatLng coords;
-  final String id;
-  final String name;
-  final String locality;
+
 }

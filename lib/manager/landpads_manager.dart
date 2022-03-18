@@ -12,13 +12,13 @@ class LandpadsManager {
   LandpadsManager._internal();
   factory LandpadsManager() => _instance;
 
-  Future<List<Landpad>> loadLaunchpads() async {
+  Future<List<Landpad>> loadLandpads() async {
     try {
       landpads.clear();
-      var response = await ApiManager().getUpcomingLaunches();
+      var response = await ApiManager().getLandpads();
 
       landpads.addAll(List<Landpad>.from(
-          response.data?.map((item) => Launch.fromJson(item)) ?? []));
+          response.data?.map((item) => Landpad.fromJson(item)) ?? []));
       return landpads;
     } catch (error, stackTrace) {
       debugPrint("$stackTrace");

@@ -6,25 +6,25 @@ part of 'landpad.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-LatLng _$LatLngFromJson(Map<String, dynamic> json) => LatLng(
-      lat: (json['lat'] as num).toDouble(),
-      lng: (json['lng'] as num).toDouble(),
-    );
-
-Map<String, dynamic> _$LatLngToJson(LatLng instance) => <String, dynamic>{
-      'lat': instance.lat,
-      'lng': instance.lng,
-    };
-
-Landpad _$LandpadFromJson(Map<String, dynamic> json) => Landpad(
-      coords: LatLng.fromJson(json['coords'] as Map<String, dynamic>),
-      id: json['id'] as String,
-      name: json['name'] as String,
-      locality: json['locality'] as String,
+Landpad _$LandpadFromJson(Map<String, dynamic> json) => $checkedCreate(
+      'Landpad',
+      json,
+      ($checkedConvert) {
+        final val = Landpad(
+          latitude: $checkedConvert('latitude', (v) => (v as num?)?.toDouble()),
+          longitude:
+              $checkedConvert('longitude', (v) => (v as num?)?.toDouble()),
+          id: $checkedConvert('id', (v) => v as String?),
+          name: $checkedConvert('name', (v) => v as String?),
+          locality: $checkedConvert('locality', (v) => v as String?),
+        );
+        return val;
+      },
     );
 
 Map<String, dynamic> _$LandpadToJson(Landpad instance) => <String, dynamic>{
-      'coords': instance.coords,
+      'latitude': instance.latitude,
+      'longitude': instance.longitude,
       'id': instance.id,
       'name': instance.name,
       'locality': instance.locality,

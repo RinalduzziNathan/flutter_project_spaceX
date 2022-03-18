@@ -3,7 +3,7 @@ import 'package:flutter_project/manager/launch_manager.dart';
 import 'package:flutter_project/model/launch.dart';
 import 'package:flutter_project/view/launch_detail.dart';
 import 'package:flutter_project/view_model/favorites_launches_vm.dart';
-import 'package:flutter_project/view_model/upcoming_launchesvm.dart';
+import 'package:flutter_project/view_model/upcoming_launches_vm.dart';
 import 'package:provider/provider.dart';
 
 import 'image_placeholder.dart';

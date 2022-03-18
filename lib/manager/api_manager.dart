@@ -21,7 +21,7 @@ class ApiManager {
   Future<Response<List<dynamic>>> getPastLaunches() async =>
       await dio.get<List<dynamic>>("/v4/launches/past");
   Future<Response<List<dynamic>>> getLandpads() async =>
-      await dio.get<List<dynamic>>("/v4/launches/past");
+      await dio.get<List<dynamic>>("/v4/landpads");
 
   Future<Response<Map<String, dynamic>>> getLaunchByID(String idLaunch) async =>
       await dio.get<Map<String, dynamic>>("/v4/launches",queryParameters: {'id': idLaunch});
