@@ -70,7 +70,7 @@ class _NotificationSetupState extends State<NotificationSetup> {
                     color: Colors.red,
                     child: const Center(
                       child: Text(
-                        "Cancel Upcoming notifications ",
+                        "Cancel upcoming notifications ",
                       ),
                     ),
                   ),
