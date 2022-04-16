@@ -18,8 +18,8 @@ Launch _$LaunchFromJson(Map<String, dynamic> json) => $checkedCreate(
           staticFireDateUtc: $checkedConvert('staticFireDateUtc',
               (v) => v == null ? null : DateTime.parse(v as String)),
           name: $checkedConvert('name', (v) => v as String?),
-          dateUtc: $checkedConvert(
-              'dateUtc', (v) => v == null ? null : DateTime.parse(v as String)),
+          date_utc: $checkedConvert('date_utc',
+              (v) => v == null ? null : DateTime.parse(v as String)),
           details: $checkedConvert('details', (v) => v as String?),
           launchLibraryId:
               $checkedConvert('launchLibraryId', (v) => v as String?),
@@ -34,7 +34,7 @@ Map<String, dynamic> _$LaunchToJson(Launch instance) => <String, dynamic>{
       'staticFireDateUtc': instance.staticFireDateUtc?.toIso8601String(),
       'details': instance.details,
       'name': instance.name,
-      'dateUtc': instance.dateUtc?.toIso8601String(),
+      'date_utc': instance.date_utc?.toIso8601String(),
       'launchLibraryId': instance.launchLibraryId,
       'id': instance.id,
     };

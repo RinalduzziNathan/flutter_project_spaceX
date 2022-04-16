@@ -17,7 +17,7 @@ class UpcomingLaunches extends ChangeNotifier{
     await LaunchManager().initFavoriteLaunches();
 
 
-    endTime = launches?.first?.dateUtc?.millisecondsSinceEpoch ?? DateTime.now().millisecondsSinceEpoch;
+    endTime = launches?.first.date_utc?.millisecondsSinceEpoch ?? DateTime.now().millisecondsSinceEpoch;
     isLoading = false;
     notifyListeners();
   }

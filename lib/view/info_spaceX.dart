@@ -52,10 +52,10 @@ class InfoSpaceX extends StatelessWidget {
                             ),
                              ),
                             const Divider(
-                              thickness: 4,
-                              color: Colors.purple,
+                              thickness: 2,
+                              color: Colors.lightBlue,
                               indent: 0,
-                              endIndent: 20,
+                              endIndent: 80,
                             ),
                             Container(
 
@@ -87,7 +87,7 @@ class InfoSpaceX extends StatelessWidget {
                             const Padding(
                               padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
                               child: Text(
-                                "The company is located in  : ",
+                                "Founder : ",
                                 style: TextStyle(
                                   fontSize: 15,
                                   fontWeight: FontWeight.normal,
@@ -95,15 +95,15 @@ class InfoSpaceX extends StatelessWidget {
                               ),
                             ),
                             const Divider(
-                              thickness: 4,
-                              color: Colors.purple,
+                              thickness: 2,
+                              color: Colors.lightBlue,
                               indent: 0,
-                              endIndent: 20,
+                              endIndent: 80,
                             ),
                             Container(
 
                               child: Text(
-                                "${viewModel.company?.headquarters?.city}, in ${viewModel.company?.headquarters?.state} ",
+                                "${viewModel.company?.founder}",
                                 style: const TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
@@ -111,11 +111,106 @@ class InfoSpaceX extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              viewModel.company?.headquarters?.address ??
-                                  "missing",
+                              " in ${viewModel.company?.founded.toString()}",
                               style: const TextStyle(
                                 fontSize: 16,
                                 color: Colors.lightBlue,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.all(32),
+                        child: Column(
+
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children:  [
+                            const Padding(
+                              padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
+                              child: Text(
+                                "Summary : ",
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                              ),
+                            ),
+                            const Divider(
+                              thickness: 2,
+                              color: Colors.lightBlue,
+                              indent: 0,
+                              endIndent: 80,
+                            ),
+                            Text(
+                              "${viewModel.company?.summary}",
+                              style: const TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.all(32),
+                        child: Column(
+
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children:  [
+                            const Padding(
+                              padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
+                              child: Text(
+                                "Number of employees : ",
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                              ),
+                            ),
+                            const Divider(
+                              thickness: 2,
+                              color: Colors.lightBlue,
+                              indent: 0,
+                              endIndent: 80,
+                            ),
+                            Text(
+                              "${viewModel.company?.employees}",
+                              style: const TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.all(32),
+                        child: Column(
+
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children:  [
+                            const Padding(
+                              padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
+                              child: Text(
+                                "Number of  launch sites : ",
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                              ),
+                            ),
+                            const Divider(
+                              thickness: 2,
+                              color: Colors.lightBlue,
+                              indent: 0,
+                              endIndent: 80,
+                            ),
+                            Text(
+                              "${viewModel.company?.launch_sites}",
+                              style: const TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
                           ],

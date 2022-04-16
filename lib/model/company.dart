@@ -15,15 +15,15 @@ class Company {
     this.employees,
     this.launch_sites,
     this.summary,
-    this.headquarters
+    this.headquarters,
+    this.founded,
   });
 
-
-
+  int? founded;
+  int? launch_sites;
   String? name;
   String? founder;
   int? employees;
-  int? launch_sites;
   String? summary;
   Headquarters? headquarters;
 

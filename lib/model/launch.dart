@@ -13,7 +13,7 @@ class Launch {
     this.links,
     this.staticFireDateUtc,
     this.name,
-    this.dateUtc,
+    this.date_utc,
     this.details,
     this.launchLibraryId,
     this.id,
@@ -24,7 +24,7 @@ class Launch {
   DateTime? staticFireDateUtc;
   String? details;
   String? name;
-  DateTime? dateUtc;
+  DateTime? date_utc;
   String? launchLibraryId;
   String? id;
 

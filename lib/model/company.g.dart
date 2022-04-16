@@ -21,16 +21,18 @@ Company _$CompanyFromJson(Map<String, dynamic> json) => $checkedCreate(
               (v) => v == null
                   ? null
                   : Headquarters.fromJson(v as Map<String, dynamic>)),
+          founded: $checkedConvert('founded', (v) => v as int?),
         );
         return val;
       },
     );
 
 Map<String, dynamic> _$CompanyToJson(Company instance) => <String, dynamic>{
+      'founded': instance.founded,
+      'launch_sites': instance.launch_sites,
       'name': instance.name,
       'founder': instance.founder,
       'employees': instance.employees,
-      'launch_sites': instance.launch_sites,
       'summary': instance.summary,
       'headquarters': instance.headquarters?.toJson(),
     };

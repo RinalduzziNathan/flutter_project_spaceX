@@ -63,7 +63,7 @@ class FavoriteLaunchList extends StatelessWidget {
                       const SizedBox(
                         height: 8,
                       ),
-                      Text("Catégorie : ${launch.dateUtc ?? 'Inconnue'}"),
+                      Text("Catégorie : ${launch.date_utc ?? 'Inconnue'}"),
                       IconButton(
                         icon: Icon((viewModel.isLaunchFavorite(launch.id!))
                             ? Icons.favorite
