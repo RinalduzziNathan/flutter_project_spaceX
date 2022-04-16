@@ -19,7 +19,7 @@ Launch _$LaunchFromJson(Map<String, dynamic> json) => $checkedCreate(
               (v) => v == null ? null : DateTime.parse(v as String)),
           name: $checkedConvert('name', (v) => v as String?),
           dateUtc: $checkedConvert(
-              'date_utc', (v) => v == null ? null : DateTime.parse(v as String)),
+              'dateUtc', (v) => v == null ? null : DateTime.parse(v as String)),
           details: $checkedConvert('details', (v) => v as String?),
           launchLibraryId:
               $checkedConvert('launchLibraryId', (v) => v as String?),
