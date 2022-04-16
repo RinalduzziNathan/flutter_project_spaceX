@@ -58,6 +58,32 @@ class NotificationService {
       androidAllowWhileIdle: true,
     );
   }
+  Future<void> showNotificationDateTime(int id, String title, String body, DateTime dateTime) async {
+
+    await flutterLocalNotificationsPlugin.zonedSchedule(
+      id,
+      title,
+      body,
+      tz.TZDateTime.from(dateTime, tz.local),
+      const NotificationDetails(
+        android: AndroidNotificationDetails(
+            'main_channel',
+            'Main Channel',
+            importance: Importance.max,
+            priority: Priority.max,
+            icon: '@drawable/ic_notif'
+        ),
+        iOS: IOSNotificationDetails(
+          sound: 'default.wav',
+          presentAlert: true,
+          presentBadge: true,
+          presentSound: true,
+        ),
+      ),
+      uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
+      androidAllowWhileIdle: true,
+    );
+  }
 
   Future<void> cancelAllNotifications() async {
     await flutterLocalNotificationsPlugin.cancelAll();

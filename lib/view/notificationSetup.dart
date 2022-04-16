@@ -17,7 +17,7 @@ class _NotificationSetupState extends State<NotificationSetup> {
 
   late bool? notificationSwitch;
   late var prefs;
-
+  var pressed = false;
   Future<bool> initshared () async {
     prefs = await SharedPreferences.getInstance();
 
@@ -80,12 +80,15 @@ class _NotificationSetupState extends State<NotificationSetup> {
                 onTap: () {
                   NotificationService().showNotification(
                       1, "Time before new launch",
-                      "Prepare for a new launch in 00:05:00", 20);
+                      "Prepare for a new launch in 00:05:00", 5);
+                  setState(() {
+                    pressed = true;
+                  });
                 },
                 child: Container(
                   height: 40,
                   width: 200,
-                  color: Colors.blueAccent,
+                  color: pressed ? Colors.green : Colors.blueAccent,
                   child: Center(
                     child: Text(
                         "Show a test notification"
