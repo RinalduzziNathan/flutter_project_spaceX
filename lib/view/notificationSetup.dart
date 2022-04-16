@@ -79,8 +79,8 @@ class _NotificationSetupState extends State<NotificationSetup> {
               InkWell(
                 onTap: () {
                   NotificationService().showNotification(
-                      1, "Time before new launch",
-                      "Prepare for a new launch in 00:05:00", 5);
+                      1, "This is just a test",
+                      "Time between launches can be long, here it's 5 seconds", 5);
                   setState(() {
                     pressed = true;
                   });
