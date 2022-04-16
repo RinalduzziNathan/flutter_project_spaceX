@@ -84,9 +84,24 @@ class _LaunchDetailState extends State<LaunchDetail> {
                         ],
                       ),
                       const SizedBox(
-                        height: 16,
+                        height: 40,
                       ),
-                      _SpotDescription(launch.details ?? "Details are missing")
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: _SpotDescription(launch.details ?? "Details are missing"),
+                      ),
+                      Center(
+                        child: Container(
+                          child: const Text(
+                            "Launch date :",
+                            style: TextStyle(fontSize: 18),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text("the : ${launch.date_utc.toString()}"),
+                      ),
                     ],
                   ),
                 ))
@@ -104,9 +119,11 @@ class _SpotDescription extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          "Description",
-          style: TextStyle(fontSize: 18),
+        const Center(
+          child: Text(
+            "Description",
+            style: TextStyle(fontSize: 18),
+          ),
         ),
         const SizedBox(
           height: 6,
