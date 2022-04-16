@@ -7,23 +7,22 @@ import '../model/company.dart';
 import 'database_manager.dart';
 
 class CompanyManager {
-  List<Company> companies = [];
+  Company? company;
   static final CompanyManager _instance = CompanyManager._internal();
 
   CompanyManager._internal();
   factory CompanyManager() => _instance;
 
-  Future<List<Company>> loadCompanies() async {
+  Future<Company?> loadCompanies() async {
     try {
-      companies.clear();
-      var response = await ApiManager().getCompanies();
+      var response = await ApiManager().getCompany();
+      if (response.data != null) {
+         company = Company.fromJson(response.data ?? {});
 
-      companies.addAll(List<Company>.from(
-          response.data?.map((item) => Company.fromJson(item)) ?? []));
-      return companies;
-    } catch (error, stackTrace) {
-      debugPrint("$stackTrace");
+        return company;
+      }
+    } catch (e) {
+      print("Erreur : $e");
     }
-    return companies;
   }
 }

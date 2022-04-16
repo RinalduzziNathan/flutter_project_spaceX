@@ -12,7 +12,7 @@ Headquarters _$HeadquartersFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = Headquarters(
-          adress: $checkedConvert('adress', (v) => v as String?),
+          address: $checkedConvert('address', (v) => v as String?),
           city: $checkedConvert('city', (v) => v as String?),
           state: $checkedConvert('state', (v) => v as String?),
         );
@@ -22,7 +22,7 @@ Headquarters _$HeadquartersFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$HeadquartersToJson(Headquarters instance) =>
     <String, dynamic>{
-      'adress': instance.adress,
+      'address': instance.address,
       'city': instance.city,
       'state': instance.state,
     };

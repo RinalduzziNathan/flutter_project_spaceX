@@ -13,8 +13,8 @@ Company _$CompanyFromJson(Map<String, dynamic> json) => $checkedCreate(
         final val = Company(
           name: $checkedConvert('name', (v) => v as String?),
           founder: $checkedConvert('founder', (v) => v as String?),
-          employees: $checkedConvert('employees', (v) => v as String?),
-          launch_sites: $checkedConvert('launch_sites', (v) => v as String?),
+          employees: $checkedConvert('employees', (v) => v as int?),
+          launch_sites: $checkedConvert('launch_sites', (v) => v as int?),
           summary: $checkedConvert('summary', (v) => v as String?),
           headquarters: $checkedConvert(
               'headquarters',

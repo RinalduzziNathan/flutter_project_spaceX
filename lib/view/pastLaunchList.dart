@@ -18,7 +18,7 @@ class PastLaunchesList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<PastLaunches>(builder:(context, PastLaunches viewModel, child){
+    return Consumer<PastLaunchesViewModel>(builder:(context, PastLaunchesViewModel viewModel, child){
       return launches.isNotEmpty ? ListView.builder(
 
         itemBuilder: (context, position) {

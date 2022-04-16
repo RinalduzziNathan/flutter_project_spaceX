@@ -8,11 +8,11 @@ part 'headquarters.g.dart';
 )
 class Headquarters {
   Headquarters({
-    this.adress,
+    this.address,
     this.city,
     this.state,
   });
-  String? adress;
+  String? address;
   String? city;
   String? state;
 

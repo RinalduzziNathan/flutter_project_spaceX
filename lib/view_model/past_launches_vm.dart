@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_project/manager/launch_manager.dart';
 import 'package:flutter_project/model/launch.dart';
 
-class PastLaunches extends ChangeNotifier{
+class PastLaunchesViewModel extends ChangeNotifier{
 
   List<Launch>? launches = [];
   bool isLoading = true;
-  PastLaunches(){
+  PastLaunchesViewModel(){
     loadPastLaunches();
   }
   Future<void> loadPastLaunches() async {

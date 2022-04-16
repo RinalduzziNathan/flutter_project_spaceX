@@ -14,9 +14,9 @@ class ViewPastLaunches extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) => PastLaunches(),
-      child: Consumer<PastLaunches>(
-        builder: (context, PastLaunches viewModel, child) =>
+      create: (_) => PastLaunchesViewModel(),
+      child: Consumer<PastLaunchesViewModel>(
+        builder: (context, PastLaunchesViewModel viewModel, child) =>
             Scaffold(
                 body: viewModel.isLoading
                     ? const Center(

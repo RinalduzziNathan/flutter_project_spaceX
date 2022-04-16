@@ -22,8 +22,8 @@ class Company {
 
   String? name;
   String? founder;
-  String? employees;
-  String? launch_sites;
+  int? employees;
+  int? launch_sites;
   String? summary;
   Headquarters? headquarters;
 
