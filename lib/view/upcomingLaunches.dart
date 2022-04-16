@@ -12,9 +12,9 @@ class ViewUpcomingLaunches extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) => UpcomingLaunches(),
-      child: Consumer<UpcomingLaunches>(
-        builder: (context, UpcomingLaunches upcomingLaunches, child) =>
+      create: (_) => UpcomingLaunchesViewModel(),
+      child: Consumer<UpcomingLaunchesViewModel>(
+        builder: (context, UpcomingLaunchesViewModel upcomingLaunches, child) =>
             Scaffold(
                 body: upcomingLaunches.isLoading
                     ? const Center(
@@ -27,7 +27,7 @@ class ViewUpcomingLaunches extends StatelessWidget {
                               children: [
                                 Text("Time before next launch : "),
                                 CountdownTimer(
-                                  endTime: upcomingLaunches.endTime,
+                                  endTime: upcomingLaunches.endTimer,
                                 ),
                               ],
                             ),

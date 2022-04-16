@@ -17,7 +17,7 @@ class UpcomingLaunchList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<UpcomingLaunches>(builder:(context, UpcomingLaunches viewModel, child){
+    return Consumer<UpcomingLaunchesViewModel>(builder:(context, UpcomingLaunchesViewModel viewModel, child){
       return launches.isNotEmpty ? ListView.builder(
 
         itemBuilder: (context, position) {

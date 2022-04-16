@@ -11,6 +11,7 @@ import 'package:flutter_project/view/upcomingLaunches.dart';
 
 import 'favoriteLaunches.dart';
 import 'info_spaceX.dart';
+import 'notificationSetup.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key, required this.title}) : super(key: key);
@@ -75,6 +76,15 @@ class _HomePageState extends State<HomePage> {
                     Icons.info,
                     color: Colors.lightBlueAccent,
 
+                  )),
+              BottomNavigationBarItem(
+                  label: "Notif",
+
+                  icon: Icon(Icons.notification_important,color: Colors.yellow,),
+                  activeIcon: Icon(
+                    Icons.notifications_active,
+                    color: Colors.yellowAccent,
+
                   ))
             ],
             currentIndex: _currentIndex,
@@ -96,6 +106,7 @@ class _HomePageState extends State<HomePage> {
               ViewPastLaunches(),
               MapFlutter(),
               InfoSpaceX(),
+              NotificationSetup(),
             ],
           ),
         );
