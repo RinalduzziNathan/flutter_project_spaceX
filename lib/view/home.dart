@@ -10,6 +10,7 @@ import 'package:flutter_project/view/upcomingLaunches.dart';
 
 
 import 'favoriteLaunches.dart';
+import 'info_spaceX.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key, required this.title}) : super(key: key);
@@ -65,6 +66,15 @@ class _HomePageState extends State<HomePage> {
                     Icons.map,
                     color: Colors.blueGrey,
 
+                  )),
+              BottomNavigationBarItem(
+                  label: "Info",
+
+                  icon: Icon(Icons.info,color: Colors.blueAccent,),
+                  activeIcon: Icon(
+                    Icons.info,
+                    color: Colors.lightBlueAccent,
+
                   ))
             ],
             currentIndex: _currentIndex,
@@ -85,6 +95,7 @@ class _HomePageState extends State<HomePage> {
               ViewFavoriteLaunches(),
               ViewPastLaunches(),
               MapFlutter(),
+              InfoSpaceX(),
             ],
           ),
         );
