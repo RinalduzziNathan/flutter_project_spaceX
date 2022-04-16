@@ -96,7 +96,7 @@ class RoadsterDetail extends StatelessWidget {
                                   endIndent: 0,
                                 ),
                                 Text(
-                                  "Mass of the vehicle : ${viewModel.roadster?.launch_mass_kg}",
+                                  "Mass of the vehicle : ${viewModel.roadster?.launch_mass_kg} kg",
                                   style: const TextStyle(
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold,
