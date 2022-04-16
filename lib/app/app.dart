@@ -3,6 +3,7 @@ import 'package:flutter_project/model/launch.dart';
 import 'package:flutter_project/view/favoriteLaunchList.dart';
 import 'package:flutter_project/view/home.dart';
 import 'package:flutter_project/view/launch_detail.dart';
+import 'package:flutter_project/view/roadster.dart';
 
 
 class App extends StatelessWidget {
@@ -23,6 +24,8 @@ class App extends StatelessWidget {
       onGenerateRoute: (RouteSettings settings) {
         var arguments = settings.arguments;
         switch (settings.name) {
+          case RoadsterDetail.route:
+            return MaterialPageRoute(builder: (_) => RoadsterDetail());
           case LaunchDetail.route:
             if (arguments != null && arguments is LaunchDetailArguments) {
               Launch  launch= arguments.launch;

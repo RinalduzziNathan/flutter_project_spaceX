@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project/view/roadster.dart';
 import 'package:flutter_project/view_model/company_vm.dart';
 import 'package:provider/provider.dart';
 
@@ -16,19 +17,19 @@ class InfoSpaceX extends StatelessWidget {
                     child: CircularProgressIndicator(),
                   )
                 : ListView(
-
                     children: <Widget>[
                       Container(
                         child: Row(
                           children: [
                             Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: Text(" ${viewModel.company?.name}'s Informations", style: const TextStyle(
-                                fontSize: 25,
-                                color: Colors.black54,
-                                fontWeight: FontWeight.bold,
-                              )
-                                  ),
+                              child: Text(
+                                  " ${viewModel.company?.name}'s Informations",
+                                  style: const TextStyle(
+                                    fontSize: 25,
+                                    color: Colors.black54,
+                                    fontWeight: FontWeight.bold,
+                                  )),
                             ),
                           ],
                         ),
@@ -38,19 +39,39 @@ class InfoSpaceX extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.all(32),
                         child: Column(
-
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                             const Padding(
-                               padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
-                               child: Text(
+                            Padding(
+                              padding: EdgeInsets.fromLTRB(0, 0, 0, 30),
+                              child: ElevatedButton(
+                                child: Row(
+                                  children: const [
+                                    Icon(
+                                      Icons.electric_car,
+                                      color: Colors.white70,
+                                      size: 33,
+                                    ),
+                                    SizedBox(width: 5),
+                                    Text("Want to see a fun fact ?")
+                                  ],
+                                ),
+                                onPressed: () async {
+                                  await Navigator.of(context).pushNamed(
+                                    RoadsterDetail.route,
+                                  );
+                                },
+                              ),
+                            ),
+                            const Padding(
+                              padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
+                              child: Text(
                                 "The company is located in  : ",
                                 style: TextStyle(
                                   fontSize: 15,
                                   fontWeight: FontWeight.normal,
                                 ),
+                              ),
                             ),
-                             ),
                             const Divider(
                               thickness: 2,
                               color: Colors.lightBlue,
@@ -58,9 +79,8 @@ class InfoSpaceX extends StatelessWidget {
                               endIndent: 80,
                             ),
                             Container(
-
                               child: Text(
-                        "${viewModel.company?.headquarters?.city}, in ${viewModel.company?.headquarters?.state} ",
+                                "${viewModel.company?.headquarters?.city}, in ${viewModel.company?.headquarters?.state} ",
                                 style: const TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
@@ -81,7 +101,6 @@ class InfoSpaceX extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.all(32),
                         child: Column(
-
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             const Padding(
@@ -101,7 +120,6 @@ class InfoSpaceX extends StatelessWidget {
                               endIndent: 80,
                             ),
                             Container(
-
                               child: Text(
                                 "${viewModel.company?.founder}",
                                 style: const TextStyle(
@@ -123,9 +141,8 @@ class InfoSpaceX extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.all(32),
                         child: Column(
-
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children:  [
+                          children: [
                             const Padding(
                               padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
                               child: Text(
@@ -155,9 +172,8 @@ class InfoSpaceX extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.all(32),
                         child: Column(
-
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children:  [
+                          children: [
                             const Padding(
                               padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
                               child: Text(
@@ -187,9 +203,8 @@ class InfoSpaceX extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.all(32),
                         child: Column(
-
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children:  [
+                          children: [
                             const Padding(
                               padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
                               child: Text(
@@ -220,7 +235,6 @@ class InfoSpaceX extends StatelessWidget {
                         'assets/SpaceX-Logo.png',
                         fit: BoxFit.fill,
                       ),
-
                     ],
                   )),
       ),

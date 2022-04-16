@@ -65,9 +65,17 @@ class _NotificationSetupState extends State<NotificationSetup> {
                     NotificationService().cancelAllNotifications();
                   },
                   child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                        border: Border.all(
+                          color: Colors.blueGrey,
+                              width: 3,
+                        ),
+                        borderRadius: BorderRadius.all(Radius.circular(20))
+                    ),
                     height: 40,
-                    width: 200,
-                    color: Colors.red,
+                    width: 230,
+
                     child: const Center(
                       child: Text(
                         "Cancel upcoming notifications ",
@@ -86,9 +94,17 @@ class _NotificationSetupState extends State<NotificationSetup> {
                   });
                 },
                 child: Container(
+                  decoration: BoxDecoration(
+                    color: pressed ? Colors.green : Colors.blueAccent,
+                      border: Border.all(
+                        color: Colors.blueGrey,
+                        width: 3,
+
+                      ),
+                      borderRadius: BorderRadius.all(Radius.circular(20))
+                  ),
                   height: 40,
-                  width: 200,
-                  color: pressed ? Colors.green : Colors.blueAccent,
+                  width: 230,
                   child: Center(
                     child: Text(
                         "Show a test notification"

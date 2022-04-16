@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project/manager/api_manager.dart';
-import 'package:flutter_project/manager/launch_manager.dart';
+
 import 'package:flutter_project/model/launch.dart';
-import 'dart:convert';
+
 import 'image_placeholder.dart';
 
 class LaunchDetailArguments {
